@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>图片聚焦动效效果</title>
+		<style type="text/css">
+			.box{
+				width: 1000px;
+				height: 500px;
+				background-color: aquamarine;
+				background: url("img/bg01.jpg") no-repeat ;
+				border-radius: 20px;
+				
+				background-position: center,center;
+				background-size: auto,100%;
+				transition: background 0.8s;
+			} 
+			.box:hover{
+				background-size: auto,180%;
+				background-position: right,center;
+				box-shadow: 0px 0px 30px 0px #999;
+			}
+			
+			/* .img-box{
+				width: 100%;
+				border-radius: 20px;
+				background-position: center,center;
+				background-size: auto,100%;
+				transition: background 0.8s;
+			}
+			.img-box:hover{
+				background-size: auto,180%;
+				background-position: right,center;
+				box-shadow: 0px 0px 30px 0px #999;
+			} */
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<!-- <img src="img/bg01.jpg" class="img-box"> -->
+		</div>
+	</body>
+</html>

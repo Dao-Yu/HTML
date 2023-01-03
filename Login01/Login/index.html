@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>登录注册页面</title>
+		<!-- <script src="https://unpkg.com/vue@next"></script> -->
+		<!-- <script src="js/v3.2.8/vue.global.prod.js" type="text/javascript" charset="utf-8"></script> -->
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			input{
+				outline: none;
+			}
+			html,body{
+				height: 100%;
+			}
+			body{
+				display: flex;
+				background: linear-gradient(to right,pink,skyblue);
+			}
+			.box{
+				width: 1050px;
+				height: 600px;
+				margin: auto;
+				display: flex;
+				position: relative;
+				/* background-color: #fff; */
+				border-radius: 8px;
+				border: 1px solid rgba(255, 255, 255, .6);
+				/*阴影 */
+				box-shadow:4px 4px 3px rgba(0,0,0,.1);
+			}
+			.pre-box{
+				width: calc(1050px / 2);
+				height: 100%;
+				left: 0;
+				top: 0;
+				position: absolute;
+				border-radius: 4px;
+				background-color: #edd4dc;
+				/* 阴影 */
+				box-shadow:4px 4px 3px rgba(0,0,0,.1);
+				/* 加入过渡动画 */
+				transition: 0.5s ease-in-out;
+			}
+			.pre-box h1{
+				margin-top: 150px;
+				text-align: center;
+				letter-spacing: 5px;
+				color: white;
+				/*阴影 */
+				box-shadow:4px 4px 3px rgba(0,0,0,.1);
+			}
+			.pre-box p{
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				margin: 20px 0;
+				color: white;
+				font-weight: bold;
+				/*阴影 */
+				box-shadow:4px 4px 3px rgba(0,0,0,.1);
+			}
+			.img-box{
+				width: 200px;
+				height: 200px;
+				margin: 20px auto;
+				border-radius: 50%;
+				overflow: hidden;
+				/*阴影 */
+				box-shadow:4px 4px 3px rgba(0,0,0,.1);
+			}
+			.img-box img{
+				width: 100%;
+				/* 加入过渡动画 */
+				transition: 0.5s ease-out;
+			}
+			.login_box,.register_box{
+				flex: 1;
+				height: 100%;
+			}
+			.title_box{
+				height: 300px;
+				line-height: 500px;
+			}
+			.title_box h1{
+				text-align: center;
+				color: white;
+				letter-spacing: 5px;
+			}
+			.input-box{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			input{
+				width: 60%;
+				height: 40px;
+				margin-bottom: 20px;
+				text-indent: 4px;
+				border: 1px solid #b0cfe9;
+				border-radius: 4px;
+			}
+			input:focus{
+				color: #b0cfe9;
+			}
+			input:focus::placeholder{
+				opacity: 0;
+			}
+			/* 登录按钮注册按钮样式 */
+			.btn-box{
+				display: flex;
+				justify-content: center;
+			}
+			button{
+				border: none;
+				width: 35%;
+				height: 30px;
+				margin: 0 7px;
+				line-height: 30px;
+				background-color: #69b3f0;
+				color: white;
+				border-radius: 4px;
+			}
+			button:hover{
+				cursor: pointer;
+				opacity: .8;
+			}
+			.btn-box p{
+				color: white;
+				height: 30px;
+				line-height: 30px;
+				font-size: 14px;
+			}
+			.btn-box p:hover{
+				cursor: pointer;
+				color: #69b3f0;
+				border-bottom: 1px solid #69b3f0;
+			}
+		</style>
+		
+		
+	</head>
+	<body>
+		<!-- <div id="app">
+			{{ counter }}
+		</div> -->
+		
+		<div class="box">
+			<div class="pre-box">
+				<h1>WELCOME</h1>
+				<p>JOIN US!</p>
+				<div class="img-box">
+					<img src="img/bg01.jpg" alt=""/>
+				</div>
+			</div>
+			
+			<div class="register_box">
+				<div class="title_box">
+					<h1>注册</h1>
+				</div>
+				<div class="input-box">
+					<input type="text" placeholder="输入用户名"/>
+					<input type="password" placeholder="输入密码"/>
+					<input type="email" placeholder="输入邮箱"/>
+				</div>
+				<div class="btn-box">
+					<button>注册</button>
+					<p onclick="mySwitch()">已有账号?去登录</p>
+				</div>
+			</div>
+			
+			<div class="login_box">
+				<div class="title_box">
+					<h1>登录</h1>
+				</div>
+				<div class="input-box">
+					<input type="text" placeholder="用户名"/>
+					<input type="password" placeholder="密码"/>
+				</div>
+				<div class="btn-box">
+					<button>登录</button>
+					<p onclick="mySwitch()">没有账号?去注册</p>
+				</div>
+			</div>
+		</div>
+		
+		
+		<script>
+			// const App = {
+			// 	data() {
+			// 		return {
+			// 			counter: "登录注册页面"
+			// 		}
+			// 	}
+				
+				
+			// };
+			// Vue.createApp(App).mount('#app');
+			let flag = true;
+			const mySwitch=()=>{
+				if(flag){
+					$(".pre-box").css("transform","translateX(100%)")
+					$(".pre-box").css("background-color","#c9e0ed")
+					$("img").attr("src","./img/bg02.jpg")
+				}else{
+					$(".pre-box").css("transform","translateX(0%)")
+					$(".pre-box").css("background-color","#edd4dc")
+					$("img").attr("src","./img/bg01.jpg")
+				}
+				flag = !flag
+			}
+		</script>
+	</body>
+</html>
